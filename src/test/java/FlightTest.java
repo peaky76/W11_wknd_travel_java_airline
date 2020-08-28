@@ -3,7 +3,9 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -58,6 +60,12 @@ public class FlightTest {
     }
 
     @Test
+    public void startsWithArrayOfUnassignedSeats() {
+        assertEquals(50, flight.getUnassignedSeats().size());
+        assertEquals((Object) 1, flight.getUnassignedSeats().get(0));
+    }
+
+    @Test
     public void canBookPassenger() {
         flight.bookPassenger(passenger);
         assertEquals(1, flight.getPassengerList().size());
@@ -77,6 +85,23 @@ public class FlightTest {
         flight.bookPassenger(passenger);
         assertEquals(false, flight.getPassengerList().contains(passenger));
         assertEquals(50, flight.getPassengerList().size());
+    }
+
+    @Test
+    public void cannotDoubleBookSeat() {
+        // Book in 50 passengers
+        for (int i = 0; i < 50; ++i) {
+            flight.bookPassenger(new Passenger("John Doe", 1));
+        }
+        // Get their seat numbers back into an array list
+        ArrayList<Integer> bookedSeatNumbers = new ArrayList<Integer>();
+        for (Passenger p: flight.getPassengerList()) {
+            bookedSeatNumbers.add(p.getSeatNumber());
+        }
+        // Convert that list into a list of unique numbers
+        List<Integer> uniqueNumbers = bookedSeatNumbers.stream().distinct().collect(Collectors.toList());
+        // Check that the lengths of those two lists are equal
+        assertEquals(uniqueNumbers.size(), bookedSeatNumbers.size());
     }
 
 }
