@@ -18,4 +18,10 @@ public class Plane {
         return planeType.getMaxWeight();
     }
 
+    public int getBagWeight() {
+        return (getMaxWeight() / 2) / getCapacity();
+    }
+
+
+
 }

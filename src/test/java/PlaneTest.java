@@ -22,4 +22,9 @@ public class PlaneTest {
         assertEquals(20000, plane.getMaxWeight());
     }
 
+    @Test
+    public void hasBagWeight() {
+        assertEquals(25, plane.getBagWeight());
+    }
+
 }
