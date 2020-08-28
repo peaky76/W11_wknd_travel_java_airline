@@ -41,4 +41,12 @@ public class Flight {
     public Plane getPlane() {
         return plane;
     }
+
+    public void bookPassenger(Passenger passenger) {
+        this.passengerList.add(passenger);
+    }
+
+    public int getAvailableSeatCount() {
+        return plane.getCapacity() - passengerList.size();
+    }
 }

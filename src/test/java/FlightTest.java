@@ -5,21 +5,15 @@ import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
 
-
-//    an empty list of booked Passenger's
-//    a Plane
-//    flight number (i.e. "FR756")
-//    destination (i.e. GLA, EDI)
-//    departure airport (i.e. GLA, EDI)
-//    departure time (use a String)
-
     Flight flight;
     Plane plane;
+    Passenger passenger;
 
     @Before
     public void before() {
         plane = new Plane(PlaneType.EMBRAERERJ145);
         flight = new Flight("AB123", "LBA", "EDI", "12:00 01/09/2020", plane);
+        passenger = new Passenger("Fred Bloggs", 2);
     }
 
     @Test
@@ -50,5 +44,17 @@ public class FlightTest {
     @Test
     public void startsEmpty() {
         assertEquals(0, flight.getPassengerList().size());
+    }
+
+    @Test
+    public void canBookPassenger() {
+        flight.bookPassenger(passenger);
+        assertEquals(1, flight.getPassengerList().size());
+    }
+
+    @Test
+    public void canGetAvailableSeatsCount() {
+        flight.bookPassenger(passenger);
+        assertEquals(49, flight.getAvailableSeatCount());
     }
 }
