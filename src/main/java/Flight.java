@@ -1,4 +1,6 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Flight {
 
@@ -6,10 +8,10 @@ public class Flight {
     private String flightNumber;
     private String arrivalAirport;
     private String departureAirport;
-    private String departureTime;
+    private LocalDateTime departureTime;
     private Plane plane;
 
-    public Flight(String flightNumber, String arrivalAirport, String departureAirport, String departureTime, Plane plane) {
+    public Flight(String flightNumber, String arrivalAirport, String departureAirport, LocalDateTime departureTime, Plane plane) {
         this.flightNumber = flightNumber;
         this.arrivalAirport = arrivalAirport;
         this.departureAirport = departureAirport;
@@ -34,7 +36,7 @@ public class Flight {
         return departureAirport;
     }
 
-    public String getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 

@@ -1,9 +1,16 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
+
+    DateTimeFormatter dateFormatter;
+    LocalDateTime departureTime;
 
     Flight flight;
     Plane plane;
@@ -11,8 +18,12 @@ public class FlightTest {
 
     @Before
     public void before() {
+
+        dateFormatter = DateTimeFormatter.ofPattern("HH:mm dd-MMM-yyyy");
+        departureTime = LocalDateTime.parse("12:00 01-Sep-2020", dateFormatter);
+
         plane = new Plane(PlaneType.EMBRAERERJ145);
-        flight = new Flight("AB123", "LBA", "EDI", "12:00 01/09/2020", plane);
+        flight = new Flight("AB123", "LBA", "EDI", departureTime, plane);
         passenger = new Passenger("Fred Bloggs", 2);
     }
 
@@ -33,7 +44,7 @@ public class FlightTest {
 
     @Test
     public void hasDepartureTime() {
-        assertEquals("12:00 01/09/2020", flight.getDepartureTime());
+        assertEquals("2020-09-01T12:00", flight.getDepartureTime().toString());
     }
 
     @Test

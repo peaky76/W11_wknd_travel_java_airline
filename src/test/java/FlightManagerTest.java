@@ -1,9 +1,15 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightManagerTest {
+
+    DateTimeFormatter dateFormatter;
+    LocalDateTime departureTime;
 
     Plane plane;
     Flight flight;
@@ -13,9 +19,14 @@ public class FlightManagerTest {
 
     @Before
     public void before() {
+
+        dateFormatter = DateTimeFormatter.ofPattern("HH:mm dd-MMM-yyyy");
+        departureTime = LocalDateTime.parse("12:00 01-Sep-2020", dateFormatter);
+
         plane = new Plane(PlaneType.BOEING777);
-        flight = new Flight("AB123", "JFK", "MCR", "12:00 01/09/2020", plane);
+        flight = new Flight("AB123", "JFK", "MCR", departureTime, plane);
         flightManager = new FlightManager(flight);
+
         passenger1 = new Passenger("Fred Bloggs", 1);
         passenger2 = new Passenger("Jo Smith", 2);
         flight.bookPassenger(passenger1);
