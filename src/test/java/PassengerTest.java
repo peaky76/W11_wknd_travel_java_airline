@@ -48,4 +48,9 @@ public class PassengerTest {
         assertEquals(flight, passenger.getBookedFlight());
     }
 
+    @Test
+    public void canGetSeatNumberIfBooked() {
+        assertEquals(true, passenger.getSeatNumber() > 0 && passenger.getSeatNumber() <= 50);
+    }
+
 }

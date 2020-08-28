@@ -4,6 +4,7 @@ public class Passenger {
     private int bagCount;
     private final int standardBagWeight = 10;
     private Flight bookedFlight;
+    private int seatNumber;
 
     public Passenger(String name, int bagCount) {
         this.name = name;
@@ -28,5 +29,13 @@ public class Passenger {
 
     public void setBookedFlight(Flight bookedFlight) {
         this.bookedFlight = bookedFlight;
+    }
+
+    public int getSeatNumber() {
+        return seatNumber;
+    }
+
+    public void setSeatNumber(int seatNumber) {
+        this.seatNumber = seatNumber;
     }
 }

@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 public class Flight {
 
@@ -48,6 +49,7 @@ public class Flight {
         if (getAvailableSeatCount() > 0) {
             this.passengerList.add(passenger);
             passenger.setBookedFlight(this);
+            passenger.setSeatNumber(generateSeatNumber());
         }
     }
 
@@ -55,5 +57,8 @@ public class Flight {
         return plane.getPassengerCapacity() - passengerList.size();
     }
 
+    private int generateSeatNumber() {
+        return new Random().nextInt(plane.getPassengerCapacity()) + 1;
+    }
 
 }
