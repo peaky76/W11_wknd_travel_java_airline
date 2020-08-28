@@ -43,7 +43,9 @@ public class Flight {
     }
 
     public void bookPassenger(Passenger passenger) {
-        this.passengerList.add(passenger);
+        if (getAvailableSeatCount() > 1) {
+            this.passengerList.add(passenger);
+        }
     }
 
     public int getAvailableSeatCount() {

@@ -57,4 +57,13 @@ public class FlightTest {
         flight.bookPassenger(passenger);
         assertEquals(49, flight.getAvailableSeatCount());
     }
+
+    @Test
+    public void cannotBookPassengerOnFullFlight() {
+        for (int i = 0; i < 50; ++i) {
+            flight.bookPassenger(new Passenger("John Doe", 1));
+        }
+        flight.bookPassenger(passenger);
+        assertEquals(false, flight.getPassengerList().contains(passenger));
+    }
 }
