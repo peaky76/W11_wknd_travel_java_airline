@@ -10,11 +10,11 @@ public class Plane {
         return planeType;
     }
 
-    public int capacity() {
+    public int getCapacity() {
         return planeType.getCapacity();
     }
 
-    public int maxWeight() {
+    public int getMaxWeight() {
         return planeType.getMaxWeight();
     }
 
