@@ -5,6 +5,19 @@ public enum PlaneType {
     BOEING777(400, 20000),
     EMBRAERERJ145(50, 1500);
 
-    public PlaneType()
+    private int capacity;
+    private int maxWeight;
 
+    PlaneType(int capacity, int maxWeight) {
+        this.capacity = capacity;
+        this.maxWeight = maxWeight;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getMaxWeight() {
+        return maxWeight;
+    }
 }
