@@ -38,7 +38,7 @@ public class FlightTest {
 
     @Test
     public void hasPlane() {
-        assertEquals(50, flight.getPlane().getCapacity());
+        assertEquals(50, flight.getPlane().getPassengerCapacity());
     }
 
     @Test
@@ -67,4 +67,5 @@ public class FlightTest {
         assertEquals(false, flight.getPassengerList().contains(passenger));
         assertEquals(50, flight.getPassengerList().size());
     }
+
 }

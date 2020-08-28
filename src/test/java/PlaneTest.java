@@ -13,13 +13,18 @@ public class PlaneTest {
     }
 
     @Test
-    public void hasCapacity() {
-        assertEquals(400, plane.getCapacity());
+    public void canGetPassengerCapacity() {
+        assertEquals(400, plane.getPassengerCapacity());
     }
 
     @Test
-    public void hasMaxWeight() {
+    public void canGetMaxWeight() {
         assertEquals(20000, plane.getMaxWeight());
+    }
+
+    @Test
+    public void canGetBaggageCapacity() {
+        assertEquals(10000, plane.getBaggageCapacity());
     }
 
 }
